@@ -24,4 +24,9 @@ class AuthController extends Controller
     {
         return $this->authService->attempt($req->validated());
     }
+
+    public function logout()
+    {
+        return $this->authService->logout();
+    }
 }
