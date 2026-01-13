@@ -16,16 +16,19 @@ Anlogs adalah system untuk track aktifitas user & analytics dashboard. Setiap la
 ## Config
 - `composer install`
 - `php artisan key:generate`
+- `cp .env.example .env` (bila .env belum ada)
+- buat database bernama anlogs
 - `php migrate`
 - `php artisan db:seed`
 - `php artisan db:seed --class=UsersTableSeeder`
 - `php artisan db:seed --class=ActivitiesTableSeeder`
+- `php artisan serve` (bila anda tidak menggunakan laragon)
 
 ## ERD
-<img src="document/ERD Anlogs.jpg" width="650">
+<img src="document/ERD Anlogs.jpg" width="450">
 
 ## Flowchart
-<img src="document/Flowchart Anlogs.jpg" width="650">
+<img src="document/Flowchart Anlogs.jpg" width="450">
 Penjelasan:
 <ul>
     <li>User melakukan login dan sistem secara otomatis mencatat aktivitas dengan mengambil informasi alamat IP, jenis aksi (login), serta halaman yang diakses.</li>
