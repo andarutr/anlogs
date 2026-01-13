@@ -14,11 +14,12 @@ Anlogs adalah system untuk track aktifitas user & analytics dashboard. Setiap la
 - Laravel 12
 
 ## Config
+- `git clone https://github.com/andarutr/anlogs.git`
 - `composer install`
-- `php artisan key:generate`
 - `cp .env.example .env` (bila .env belum ada)
+- `php artisan key:generate`
 - buat database bernama anlogs
-- `php migrate`
+- `php artisan migrate`
 - `php artisan db:seed`
 - `php artisan db:seed --class=UsersTableSeeder`
 - `php artisan db:seed --class=ActivitiesTableSeeder`
