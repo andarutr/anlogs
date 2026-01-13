@@ -12,6 +12,18 @@
                     <h4>Dashboard Analytics</h4>
                 </div>
                 <div class="card-body">
+                    <!-- Charts Section -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h5>Daily Activity Chart</h5>
+                            <canvas id="dailyChart"></canvas>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Activity by Action Chart</h5>
+                            <canvas id="actionChart"></canvas>
+                        </div>
+                    </div>
+
                     <!-- Filter Section -->
                     <div class="row mb-4">
                         <div class="col-md-3">
@@ -126,7 +138,10 @@
         </div>
     </div>
 </div>
+@endsection
 
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 function applyFilters() {
     const startDate = $('#start_date').val();
@@ -140,5 +155,83 @@ function applyFilters() {
     
     window.location.href = url;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Daily Chart
+    const dailyCtx = document.getElementById('dailyChart').getContext('2d');
+    const dailyData = {
+        labels: [
+            @foreach($dailyTotals as $daily)
+                '{{ $daily->date }}',
+            @endforeach
+        ],
+        datasets: [{
+            label: 'Total Activities',
+            data: [
+                @foreach($dailyTotals as $daily)
+                    {{ $daily->total_activities }},
+                @endforeach
+            ],
+            borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            tension: 0.1
+        }]
+    };
+    
+    new Chart(dailyCtx, {
+        type: 'line',
+        data: dailyData,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            }
+        }
+    });
+
+    // Action Chart
+    const actionCtx = document.getElementById('actionChart').getContext('2d');
+    const actionData = {
+        labels: [
+            @foreach($actionTotals as $action)
+                '{{ ucfirst($action->action) }}',
+            @endforeach
+        ],
+        datasets: [{
+            label: 'Total Activities',
+            data: [
+                @foreach($actionTotals as $action)
+                    {{ $action->total_activities }},
+                @endforeach
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 205, 86, 0.2)'
+            ],
+            borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+            ],
+            borderWidth: 1
+        }]
+    };
+    
+    new Chart(actionCtx, {
+        type: 'bar',
+        data: actionData,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            }
+        }
+    });
+});
 </script>
-@endsection
+@endpush

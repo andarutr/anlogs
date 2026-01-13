@@ -11,7 +11,7 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-5 text-center mx-auto">
 					<h1 class="text-white mb-2 mt-5">Selamat Datang!</h1>
-					<p class="text-lead text-white">Masuk yuk...</p>
+					<p class="text-lead text-white">Silahkan masuk...</p>
 				</div>
 			</div>
 		</div>
@@ -34,8 +34,6 @@
 						<div class="text-center">
 							<button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2" onClick="submit()">Login</button>
 						</div>
-						<p class="text-sm mt-3 mb-0">Belum memiliki akun? <a href="/auth/register"
-								class="text-dark font-weight-bolder">Register</a></p>
 					</div>
 				</div>
 			</div>
@@ -66,9 +64,10 @@ function submit() {
                     text: response.message,
                     icon: 'success',
                     allowOutsideClick: false,
-                    confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
+                    showConfirmButton: false, 
+                    timer: 2000, 
+                    timerProgressBar: true,
+                    willClose: () => {
                         window.location.href = "/dashboard";
                     }
                 });

@@ -29,22 +29,6 @@
                     <span class="navbar-toggler-bar bar3"></span>
                 </span>
             </button>
-            <div class="collapse navbar-collapse" id="navigation">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link me-2" href="/auth/login">
-                            <i class="fas fa-key opacity-6  me-1"></i>
-                            Register
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav d-lg-block d-none">
-                    <li class="nav-item">
-                        <a href="/auth/login"
-                            class="btn btn-sm mb-0 me-1 bg-gradient-light">Login</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 

@@ -81,6 +81,7 @@
         }
 
     </style>
+    @stack('styles')
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -262,6 +263,7 @@
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="/assets/js/argon-dashboard.min.js?v=2.1.0"></script>
+    @stack('scripts')
 </body>
 
 </html>
