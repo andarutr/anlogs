@@ -5,9 +5,13 @@ Anlogs adalah system untuk track aktifitas user & analytics dashboard. Setiap la
 <div align="left">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" height="40" alt="Bootstrap" />
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" height="40" alt="jQuery" />
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" height="40" alt="Laravel" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" height="40" alt="Laravel" />
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" height="40" alt="MySQL" />
 </div>
+
+## Requirement
+- PHP version > 8.2
+- Laravel 12
 
 ## Config
 - `composer install`
@@ -16,6 +20,18 @@ Anlogs adalah system untuk track aktifitas user & analytics dashboard. Setiap la
 - `php artisan db:seed`
 - `php artisan db:seed --class=UsersTableSeeder`
 - `php artisan db:seed --class=ActivitiesTableSeeder`
+
+## ERD
+<img src="document/ERD Anlogs.jpg" width="650">
+
+## Flowchart
+<img src="document/Flowchart Anlogs.jpg" width="650">
+Penjelasan:
+<ul>
+    <li>User melakukan login dan sistem secara otomatis mencatat aktivitas dengan mengambil informasi alamat IP, jenis aksi (login), serta halaman yang diakses.</li>
+    <li>User mengunjungi halaman apapun dan sistem secara otomatis mencatat aktivitas dengan mengambil informasi alamat IP, jenis aksi (visit), serta halaman yang dikunjungi.</li>
+    <li>User melakukan logout dan sistem secara otomatis mencatat aktivitas dengan mengambil informasi alamat IP, jenis aksi (logout), serta halaman tempat logout dilakukan.</li>
+</ul>
 
 ## Account Testing
 - email: bangbruno@example.com
