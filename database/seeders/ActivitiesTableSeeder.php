@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -32,13 +33,20 @@ class ActivitiesTableSeeder extends Seeder
         }
         
         for ($i = 1; $i <= 10500; $i++) {
+            $day = rand(1, 13);
+            $hour = rand(0, 23);
+            $minute = rand(0, 59);
+            $second = rand(0, 59);
+            
+            $randomDateTime = "2026-01-{$day} {$hour}:{$minute}:{$second}";
+
             $activities[] = [
                 'user_id' => $userIds[array_rand($userIds)],
                 'action' => $actions[array_rand($actions)],
                 'page' => $pages[array_rand($pages)],
                 'ip_address' => fake()->ipv4(),
-                'created_at' => now(),
-                'updated_at' => now(),
+                'created_at' => $randomDateTime,
+                'updated_at' => $randomDateTime
             ];
             
             // Batching per 1000 data agar optimize
